@@ -1,0 +1,6 @@
+The Memcached plugin helps integrate [Memcached|http://memcached.org] as the Hibernate 2nd-level cache provider. 
+
+The plugin uses the [hibernate-memcached|https://code.google.com/p/hibernate-memcached/] library which in turn uses the [spymemcached|https://code.google.com/p/spymemcached/] client.
+
+It's possible to use hibernate-memcached directly (see the integration instructions [here|https://code.google.com/p/hibernate-memcached/wiki/ConfiguringGrails]) but the plugin has some benefits over that approach. One is that the dependencies are already configured. Another is that configuration is done in Config.groovy instead of setting somewhat obscure Hibernate properties in DataSource.groovy. This also has the benefit of making integration with cloud plugins easy since they can just modify the Grails configuration.
+

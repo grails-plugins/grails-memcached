@@ -23,15 +23,16 @@ class MemcachedGrailsPlugin {
 	String authorEmail = 'beckwithb@vmware.com'
 	String description = 'Integrates Memcached as the Hibernate 2nd-level cache provider'
 	String documentation = 'http://grails.org/plugin/memcached'
+	List pluginExcludes = [
+		'grails-app/domain/**',
+		'docs/**',
+		'src/docs/**'
+	]
 
 	String license = 'APACHE'
 	def organization = [name: 'SpringSource', url: 'http://www.springsource.org/']
 	def issueManagement = [system: 'JIRA', url: 'http://jira.grails.org/browse/GPMEMCACHED']
 	def scm = [url: 'https://github.com/grails-plugins/grails-memcached']
-
-	def pluginExcludes = [
-		'grails-app/domain/**'
-	]
 
 	def doWithSpring = {
 		memcachedBeanPostprocessor(MemcachedBeanPostprocessor)

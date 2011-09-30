@@ -1,0 +1,35 @@
+h4. The first step is to install the plugin:
+
+{code}
+grails install-plugin memcached
+{code}
+
+Then you just need to configure the memcached server(s). This is done with a space-delimited list of server names and ports. Combine each server name and port with a colon, e.g.
+
+{code}
+grails.plugin.memcached.hosts = 'localhost:11211'
+{code}
+
+or
+
+{code}
+grails.plugin.memcached.hosts = 'memcached1.yourcompany.com:11211 memcached2.yourcompany.com:11211 memcached5.yourcompany.com:11211'
+{code}
+
+or
+
+{code}
+grails.plugin.memcached.hosts = '10.10.0.1:11211 10.10.0.2:11211 10.10.0.5:11211'
+{code}
+
+Often memcached is behind a firewall and security isn't important but if your servers need a username and password you can configure those:
+
+{code}
+grails.plugin.memcached.username = 'the username'
+grails.plugin.memcached.password = 'the password'
+{code}
+
+h4. DataSource.groovy changes
+
+You can change the @hibernate.cache.provider_class@ property from its default value (@'org.hibernate.cache.EhCacheProvider'@) in DataSource.groovy if you want, but its value will be ignored and reconfigured to be @'com.googlecode.hibernate.memcached.MemcachedCacheProvider'@. One reason to edit the file is to make it more clear that you're using memcached, but it's not required.
+
