@@ -16,7 +16,7 @@
 import grails.plugin.memcached.MemcachedBeanPostprocessor
 
 class MemcachedGrailsPlugin {
-	String version = '1.0'
+	String version = '1.0.1'
 	String grailsVersion = '1.3.3 > *'
 	String title = 'Integrates Memcached as the Hibernate 2nd-level cache provider'
 	String author = 'Burt Beckwith'
