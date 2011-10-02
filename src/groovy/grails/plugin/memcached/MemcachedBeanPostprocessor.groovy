@@ -61,6 +61,9 @@ class MemcachedBeanPostprocessor implements BeanDefinitionRegistryPostProcessor,
 			if (beanFactory.containsBean('dataSource')) {
 				fixMemcached beanFactory, appConfig
 			}
+			else {
+				log.debug 'No DataSource detected, not updating Memcached'
+			}
 		}
 		catch (Throwable e) {
 			handleError e, 'Problem updating DataSource'
@@ -73,7 +76,12 @@ class MemcachedBeanPostprocessor implements BeanDefinitionRegistryPostProcessor,
 		String hosts = getConfigString(memcachedConfig, 'hosts')
 
 		if (!hosts) {
+			log.debug "No hosts config under 'grails.plugin.memcached' ($appConfig.grails.plugin.memcached), not updating Memcached"
 			return
+		}
+
+		if (!hosts.contains(':')) {
+			hosts += ':11211'
 		}
 
 		String username = getConfigString(memcachedConfig, 'username')
