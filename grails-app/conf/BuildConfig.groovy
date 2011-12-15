@@ -1,6 +1,4 @@
-grails.project.class.dir = 'target/classes'
-grails.project.test.class.dir = 'target/test-classes'
-grails.project.test.reports.dir = 'target/test-reports'
+grails.project.work.dir = 'target'
 grails.project.docs.output.dir = 'docs/manual' // for backwards-compatibility, the docs are checked into gh-pages branch
 
 grails.project.dependency.resolution = {
@@ -19,14 +17,19 @@ grails.project.dependency.resolution = {
 	}
 
 	dependencies {
-		runtime('com.googlecode:hibernate-memcached:1.3') { transitive = false }
-		compile('spy:spymemcached:2.7.1') { transitive = false }
+		compile('com.googlecode:hibernate-memcached:1.3') {
+//			transitive = false
+			excludes 'spymemcached', 'java_memcached', 'slf4j-api', 'slf4j-log4j12',
+			         'hibernate', 'hibernate-annotations', 'junit', 'hsqldb', 'groovy-all'
+		}
+		compile('spy:spymemcached:2.7.3') {
+//			transitive = false
+			excludes 'netty', 'jettison', 'commons-codec'
+		}
 	}
 
 	plugins {
-
-		compile ":hibernate:$grailsVersion"
-
-		build(':release:1.0.0.RC3') { export = false }
+		compile(":hibernate:$grailsVersion") { export = false }
+		build(':release:1.0.0') { export = false }
 	}
 }
