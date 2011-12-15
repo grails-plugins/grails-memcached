@@ -22,7 +22,7 @@ grails.project.dependency.resolution = {
 	}
 
 	plugins {
-		compile ":hibernate:$grailsVersion"
+		compile(":hibernate:$grailsVersion") { export = false }
 		build(':release:1.0.0') { export = false }
 	}
 }
