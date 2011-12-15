@@ -17,8 +17,15 @@ grails.project.dependency.resolution = {
 	}
 
 	dependencies {
-		compile('com.googlecode:hibernate-memcached:1.3') { transitive = false }
-		compile('spy:spymemcached:2.7.3') { transitive = false }
+		compile('com.googlecode:hibernate-memcached:1.3') {
+//			transitive = false
+			excludes 'spymemcached', 'java_memcached', 'slf4j-api', 'slf4j-log4j12',
+			         'hibernate', 'hibernate-annotations', 'junit', 'hsqldb', 'groovy-all'
+		}
+		compile('spy:spymemcached:2.7.3') {
+//			transitive = false
+			excludes 'netty', 'jettison', 'commons-codec'
+		}
 	}
 
 	plugins {
@@ -26,4 +33,3 @@ grails.project.dependency.resolution = {
 		build(':release:1.0.0') { export = false }
 	}
 }
-//https://raykrueger.googlecode.com/svn/repository/com/googlecode/hibernate-memcached/1.3/hibernate-memcached-1.3.pom
