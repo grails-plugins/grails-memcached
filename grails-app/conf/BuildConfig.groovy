@@ -17,7 +17,7 @@ grails.project.dependency.resolution = {
 	}
 
 	dependencies {
-		runtime('com.googlecode:hibernate-memcached:1.3') { transitive = false }
+		compile('com.googlecode:hibernate-memcached:1.3') { transitive = false }
 		compile('spy:spymemcached:2.7.3') { transitive = false }
 	}
 
@@ -26,3 +26,4 @@ grails.project.dependency.resolution = {
 		build(':release:1.0.0') { export = false }
 	}
 }
+//https://raykrueger.googlecode.com/svn/repository/com/googlecode/hibernate-memcached/1.3/hibernate-memcached-1.3.pom
